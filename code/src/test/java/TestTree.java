@@ -29,15 +29,18 @@ public class TestTree {
         CustomerTreeNode root = buildTestTree();
         // 前序遍历
 
-        BinaryTree.pre(root);
-        System.out.println("前序遍历");
+//        BinaryTree.pre(root);
+//        System.out.println("前序遍历");
+//
+//        // 后序遍历
+//        BinaryTree.postorder(root);
+//        System.out.println("后序遍历");
+//
+//        // 中序遍历
+//        BinaryTree.inorder(root);
+//        System.out.println("中序遍历");
 
-        // 后序遍历
-        BinaryTree.postorder(root);
-        System.out.println("后序遍历");
-
-        // 中序遍历
-        BinaryTree.inorder(root);
-        System.out.println("中序遍历");
+        // bfs 层次遍历
+        BinaryTree.bfs(root);
     }
 }

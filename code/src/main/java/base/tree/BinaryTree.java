@@ -1,5 +1,8 @@
 package base.tree;
 
+import base.queue.ArrayQueue;
+import base.stack.ArrayStack;
+
 /**
  * @author weijiabin-work
  * @title: BinaryTree
@@ -64,6 +67,58 @@ public class BinaryTree {
         if (null != root.getRight()){
             inorder(root.getRight());
         }
+    }
+
+
+    /**
+     * 广度优先的层次遍历
+     * 利用栈的先入后出性质
+     * 递归实现
+     * @param root
+     */
+    public static void bfs(CustomerTreeNode root){
+        ArrayQueue arrayQueue = new ArrayQueue(9);
+        CustomerTreeNode[] treeNodes = new CustomerTreeNode[9];
+        int i = 8;
+        arrayQueue.offer(root);
+        while (!arrayQueue.isEmpty()){
+            CustomerTreeNode node = (CustomerTreeNode) arrayQueue.poll();
+            treeNodes[i--] = node;
+            if (null != node.getRight()){
+                arrayQueue.offer(node.getRight());
+            }
+            if (null != node.getLeft()){
+                arrayQueue.offer(node.getLeft());
+            }
+        }
+
+        // 输出结果
+        for (int j =0; j<9; j++){
+            System.out.print(treeNodes[j].getData()+"-");
+        }
+    }
+
+
+    /**
+     * 深度优先的层次遍历
+     * 利用栈的先入后出性质
+     * @param root
+     */
+    public static void dfs(CustomerTreeNode root){
+        ArrayStack stack = new ArrayStack(9);
+        ArrayStack stackValue = new ArrayStack(9);
+        stack.push(root);
+        while(!stack.isEmpty()){
+            CustomerTreeNode node = (CustomerTreeNode) stack.pop();
+            stackValue.push(node.getData());
+            if (null != node.getLeft()){
+                stack.push(node.getLeft());
+            }
+            if (null != node.getRight()){
+                stack.push(node.getRight());
+            }
+        }
+        stackValue.list();
     }
 
 }
